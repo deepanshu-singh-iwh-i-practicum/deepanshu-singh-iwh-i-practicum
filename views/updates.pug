@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet" href="/css/style.css")
+  body
+    main.container.narrow
+      a.back-link(href="/") ← Return to the homepage
+      header.page-header
+        p.eyebrow HUBSPOT CRM
+        h1 Add a campaign
+        p.subtitle Enter the details below to create a new custom object record.
+      if error
+        .alert= error
+      form.panel.form-panel(action="/update-cobj" method="POST")
+        label(for="name") Campaign name
+        input#name(type="text" name="name" placeholder="e.g. Winter Brand Campaign" required)
+        label(for="platform") Platform
+        input#platform(type="text" name="platform" placeholder="e.g. Instagram, Google Ads" required)
+        label(for="budget") Budget (₹)
+        input#budget(type="number" name="budget" min="0" step="1" placeholder="e.g. 20000" required)
+        button.button(type="submit") Create campaign

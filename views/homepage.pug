@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet" href="/css/style.css")
+  body
+    main.container
+      header.topbar
+        div
+          p.eyebrow HUBSPOT INTEGRATION PRACTICUM
+          h1 Digital Marketing Campaigns
+          p.subtitle Manage campaign records connected to your HubSpot CRM.
+        a.button(href="/update-cobj") + Add to this table
+      if error
+        .alert= error
+      .panel
+        .panel-heading
+          h2 Campaign records
+          span.count= `${records.length} record(s)`
+        if records.length
+          .table-wrap
+            table
+              thead
+                tr
+                  th Name
+                  th Platform
+                  th Budget (₹)
+              tbody
+                each record in records
+                  tr
+                    td= record.properties.name || "—"
+                    td= record.properties.platform || "—"
+                    td= record.properties.budget ? Number(record.properties.budget).toLocaleString("en-IN") : "—"
+        else
+          .empty
+            h3 No records to display
+            p Add a campaign using the button above. If this is unexpected, check your HubSpot token and object type.
+      footer Built with Node.js, Express, Pug and the HubSpot CRM API.

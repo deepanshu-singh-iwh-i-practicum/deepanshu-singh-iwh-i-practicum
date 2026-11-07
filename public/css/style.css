@@ -1,58 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
 
-body, * {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
+:root {
+  --ink: #17243a;
+  --muted: #68758a;
+  --line: #e7ebf1;
+  --accent: #ff7a45;
+  --accent-dark: #e65f2d;
+  --surface: #ffffff;
+  --background: #f5f7fb;
 }
-
-h1 {
-    margin: 1rem;
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
 }
-
-.cards {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+.container { width: min(1080px, calc(100% - 40px)); margin: 64px auto; }
+.container.narrow { width: min(620px, calc(100% - 40px)); margin-top: 48px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
+h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+h1 { font-size: clamp(30px, 5vw, 43px); letter-spacing: -1.5px; margin: 7px 0; }
+h2 { font-size: 19px; margin: 0; }
+.eyebrow { color: var(--accent-dark); font-size: 11px; font-weight: 700; letter-spacing: 1.6px; }
+.subtitle { color: var(--muted); margin: 8px 0 0; line-height: 1.6; }
+.button {
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 0; border-radius: 10px; padding: 13px 19px;
+  background: var(--accent); color: white; text-decoration: none;
+  font: 700 14px 'DM Sans', sans-serif; cursor: pointer;
+  transition: background .2s, transform .2s;
 }
-
-.card {
-    flex-basis: 31%;
-    margin: 1rem 0.4rem;
-    padding: 1rem 0.4rem 2.5rem 0.4rem;
-    border: solid 1px lightgrey;
-    border-radius: 15px;
-    box-shadow: 3px 2px 6px lightgrey;
+.button:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.panel {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 16px; box-shadow: 0 12px 35px rgba(25, 42, 70, .045);
 }
-
-.card__email {
-    font-size: 1rem;
+.panel-heading { display: flex; justify-content: space-between; align-items: center; padding: 22px 24px; }
+.count { color: var(--muted); font-size: 13px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: 16px 24px; border-top: 1px solid var(--line); white-space: nowrap; }
+th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .8px; }
+td { font-size: 14px; }
+tbody tr:hover { background: #fffaf7; }
+.empty { padding: 42px 24px; text-align: center; }
+.empty h3 { margin: 0 0 8px; }
+.empty p, footer { color: var(--muted); font-size: 13px; }
+footer { text-align: center; padding: 25px 0; }
+.back-link { display: inline-block; color: var(--muted); text-decoration: none; font-size: 14px; margin-bottom: 35px; }
+.back-link:hover { color: var(--accent-dark); }
+.page-header { margin-bottom: 25px; }
+.form-panel { padding: 28px; display: grid; gap: 11px; }
+label { font-size: 13px; font-weight: 700; margin-top: 8px; }
+input {
+  width: 100%; border: 1px solid #dce2eb; border-radius: 9px;
+  padding: 13px 14px; font: 14px 'DM Sans', sans-serif; color: var(--ink);
+  outline: none; background: #fff;
 }
-
-.form-wrapper {
-    font-size: 18px;
-    max-width: 768px;
-    margin: 2rem auto;
-    padding: 2rem;
-    border: solid 1px lightgrey;
-    border-radius: 15px;
-    box-shadow: 3px 2px 6px lightgrey;
-}
-
-label, input {
-    margin-top: 5px;
-    display: block;
-    font-size: inherit;
-}
-
-input[type="text"] {
-    padding: .25rem;
-}
-
-input[type="submit"] {
-    background-color: lightgrey;
-    border: none;
-    padding: .375rem 1rem;
-    margin-top: 10px;
+input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255, 122, 69, .12); }
+.form-panel button { margin-top: 13px; width: 100%; }
+.alert { padding: 14px 16px; margin: 0 0 18px; border: 1px solid #ffd0c0; border-radius: 10px; background: #fff4ef; color: #9d3d1b; font-size: 13px; }
+@media (max-width: 650px) {
+  .container { margin: 35px auto; }
+  .topbar { align-items: flex-start; flex-direction: column; }
+  .panel-heading { padding: 18px; }
+  th, td { padding: 14px 18px; }
 }
